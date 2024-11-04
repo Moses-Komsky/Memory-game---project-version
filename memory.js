@@ -2,21 +2,31 @@
 (function HPfetch(){
     fetch('https://hp-api.herokuapp.com/api/characters')
     .then(response => response.json())
-    .then(data => {})
+    .then(data => {
+        for(var i = 0; i < 12; i++){}
+    })
     .catch(error => console.error("Error fetching Harry Potter images:", error));
 })();
 
 // function for fetching dog images (incomplete)
 function fetchDogImages() {
-    fetch('https://dog.ceo/api/breeds/list/all')
+    fetch('https://dog.ceo/api/breeds/image/random/12')
     .then(response => response.json())
     .then(data => {
          const dogBreeds = data.message;
-         for (let breed in dogBreeds) {
-             const dogImage = document.createElement('img');
-             dogImage.src = `https://dog.ceo/api/breed/${breed}/images/random`;
-             dogImage.classList.add('dog-image');
-             document.getElementById('dog-images').appendChild(dogImage);
+         for (var i = 0; i < 12; i+2) {
+             const cardPairfirstcard = document.getElementById(i + 1);
+             const dogImage1 = cardPairfirstcard.document.querySelector(".front-face");
+             const dogBadge1 = cardPair.document.querySelector(".back-face");
+             dogImage1.src = `https://dog.ceo/api/breed/images/random/${i+1}`;
+             dogBadge1.src = `https://images.dog.ceo/breeds/shiba/shiba-5.jpg`;
+             dogImage1.classList.add('dog-image');
+             dogBadge1.classList.add('dog-badge');
+             const cardPairSecondcard = document.getElementById(i + 2);
+             const dogImage2 = cardPairSecondcard.document.querySelector(".front-face");
+             const dogBadge2 = cardPairSecondcard.document.querySelector(".back-face");
+             dogImage2.src = `https://dog.ceo/api/breed/images/random/${i+1}`;
+             dogBadge2.src = `https://images.dog.ceo/breeds/shiba/shiba-5.jpg`;
          }
      })
     .catch(error => console.error("Error fetching dog images:", error));
@@ -28,7 +38,7 @@ function fetchCountryFlags() {
     .then(response => response.json())
     .then(data => {
          const countryFlags = data;
-         for (let country in countryFlags) {
+         for (var i = 0; i < 12; i++) {
              const countryFlag = document.createElement('img');
              countryFlag.src = countryFlags[country].svg;
              countryFlag.classList.add('country-flag');
