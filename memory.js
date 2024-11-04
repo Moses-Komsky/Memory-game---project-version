@@ -42,6 +42,19 @@ function fetchCountryFlags() {
     .catch(error => console.error("Error fetching country flags:", error));
 };
 
+document.querySelector(".options").addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-HP")) {
+        HPfetch();
+        shuffle();
+    } else if (e.target.classList.contains("btn-dogs")) {
+        fetchDogImages();
+        shuffle();
+    } else if (e.target.classList.contains("btn-flags")) {
+        fetchCountryFlags();
+        shuffle();
+    }
+})
+
 // Select all the cards from the HTML file
 const cards = document.querySelectorAll(".memory-card");
 
@@ -128,7 +141,7 @@ function resetBoard() {
 
 // This function shuffles the cards
 // we are calling this fucntion imidietly when the game start and this is why we have () in the end of the function
-(function() {
+(function shuffle() {
   cards.forEach((card) => {
     // create a random number between 0 - 11
     let randomPos = Math.floor(Math.random() * 12);
