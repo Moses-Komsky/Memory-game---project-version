@@ -1,6 +1,46 @@
-const HPUrl = "https://hp-api.herokuapp.com/api/characters"
-const DogsUrl = "https://dog.ceo/api/breeds/list/all"
-const FlagsUrl = "https://flagsapi.com/#countries"
+const HPUrl = "https://hp-api.herokuapp.com/api/characters";
+const DogsUrl = "https://dog.ceo/api/breeds/list/all";
+const FlagsUrl = "https://flagsapi.com/#countries";
+
+// function for setting up default settings and fetching Harry potter images (incomplete)
+function HPfetch(){
+    fetch('https://hp-api.herokuapp.com/api/characters')
+    .then(response => response.json())
+    .then(data => {})
+    .catch(error => console.error("Error fetching Harry Potter images:", error));
+}();
+
+// function for fetching dog images (incomplete)
+function fetchDogImages() {
+    fetch('https://dog.ceo/api/breeds/list/all')
+    .then(response => response.json())
+    .then(data => {
+         const dogBreeds = data.message;
+         for (let breed in dogBreeds) {
+             const dogImage = document.createElement('img');
+             dogImage.src = `https://dog.ceo/api/breed/${breed}/images/random`;
+             dogImage.classList.add('dog-image');
+             document.getElementById('dog-images').appendChild(dogImage);
+         }
+     })
+    .catch(error => console.error("Error fetching dog images:", error));
+};
+
+// function for fetching country flags (incomplete)
+function fetchCountryFlags() {
+    fetch('https://flagsapi.com/countries')
+    .then(response => response.json())
+    .then(data => {
+         const countryFlags = data;
+         for (let country in countryFlags) {
+             const countryFlag = document.createElement('img');
+             countryFlag.src = countryFlags[country].svg;
+             countryFlag.classList.add('country-flag');
+             document.getElementById('country-flags').appendChild(countryFlag);
+         }
+     })
+    .catch(error => console.error("Error fetching country flags:", error));
+};
 
 // Select all the cards from the HTML file
 const cards = document.querySelectorAll(".memory-card");
