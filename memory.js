@@ -1,3 +1,7 @@
+const HPUrl = "https://hp-api.herokuapp.com/api/characters"
+const DogsUrl = "https://dog.ceo/api/breeds/list/all"
+const FlagsUrl = "https://flagsapi.com/#countries"
+
 // Select all the cards from the HTML file
 const cards = document.querySelectorAll(".memory-card");
 
