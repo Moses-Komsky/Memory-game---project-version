@@ -1,7 +1,3 @@
-const HPUrl = "https://hp-api.herokuapp.com/api/characters";
-const DogsUrl = "https://dog.ceo/api/breeds/list/all";
-const FlagsUrl = "https://flagsapi.com/#countries";
-
 // function for setting up default settings and fetching Harry potter images (incomplete)
 function HPfetch(){
     fetch('https://hp-api.herokuapp.com/api/characters')
@@ -41,19 +37,6 @@ function fetchCountryFlags() {
      })
     .catch(error => console.error("Error fetching country flags:", error));
 };
-
-document.querySelector(".options").addEventListener("click", function (e) {
-    if (e.target.classList.contains("btn-HP")) {
-        HPfetch();
-        shuffle();
-    } else if (e.target.classList.contains("btn-dogs")) {
-        fetchDogImages();
-        shuffle();
-    } else if (e.target.classList.contains("btn-flags")) {
-        fetchCountryFlags();
-        shuffle();
-    }
-})
 
 // Select all the cards from the HTML file
 const cards = document.querySelectorAll(".memory-card");
@@ -155,3 +138,17 @@ function resetBoard() {
 
 // we will add a "click" event listener that will trigger flipCard on every card element
 cards.forEach((card) => card.addEventListener("click", flipCard));
+
+// Adding event listener to options buttons to fetch different data sources (Harry Potter, Dogs, Flags) and shuffle the cards accordingly.
+document.querySelector(".options").addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-HP")) {
+        HPfetch();
+        shuffle();
+    } else if (e.target.classList.contains("btn-dogs")) {
+        fetchDogImages();
+        shuffle();
+    } else if (e.target.classList.contains("btn-flags")) {
+        fetchCountryFlags();
+        shuffle();
+    }
+})
