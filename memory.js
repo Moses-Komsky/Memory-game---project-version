@@ -10,23 +10,25 @@
 
 // function for fetching dog images (incomplete)
 function fetchDogImages() {
-    fetch('https://dog.ceo/api/breeds/image/random/12')
+    fetch('https://dog.ceo/api/breeds/image/random/6')
     .then(response => response.json())
     .then(data => {
          const dogBreeds = data.message;
          for (var i = 0; i < 12; i+2) {
-             const cardPairfirstcard = document.getElementById(i + 1);
+             let cardPairfirstcard = document.getElementById(i + 1);
              const dogImage1 = cardPairfirstcard.document.querySelector(".front-face");
              const dogBadge1 = cardPair.document.querySelector(".back-face");
-             dogImage1.src = `https://dog.ceo/api/breed/images/random/${i+1}`;
+             dogImage1.src = dogBreeds[i];
              dogBadge1.src = `https://images.dog.ceo/breeds/shiba/shiba-5.jpg`;
-             dogImage1.classList.add('dog-image');
-             dogBadge1.classList.add('dog-badge');
-             const cardPairSecondcard = document.getElementById(i + 2);
+             dogImage1.alt = "dog-image";
+             dogBadge1.alt = "dog-badge";
+             let cardPairSecondcard = document.getElementById(i + 2);
              const dogImage2 = cardPairSecondcard.document.querySelector(".front-face");
              const dogBadge2 = cardPairSecondcard.document.querySelector(".back-face");
-             dogImage2.src = `https://dog.ceo/api/breed/images/random/${i+1}`;
+             dogImage2.src = dogBreeds[i];
              dogBadge2.src = `https://images.dog.ceo/breeds/shiba/shiba-5.jpg`;
+             dogImage2.alt = "dog-image";
+             dogBadge2.alt = "dog-badge";
          }
      })
     .catch(error => console.error("Error fetching dog images:", error));
