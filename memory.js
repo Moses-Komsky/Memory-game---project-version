@@ -3,7 +3,25 @@
     fetch('https://hp-api.herokuapp.com/api/characters')
     .then(response => response.json())
     .then(data => {
-        for(var i = 0; i < 12; i++){}
+        let rng1 = math.floor(Math.random() *2 +1);
+        const HPchars = data.message;
+        for(var i = 0; i < 12; i+2){
+            const charimg = HPchars[i*rng1].image;
+            let firstcardPair = document.getElementById(i+1);
+            const charCard1 = firstcardPair.document.querySelector(".front-face");
+            const CharBadge1 = firstcardPair.document.querySelector(".back-face");
+            charCard1.src = charimg;
+            CharBadge1.src = `https://via.placeholder.com/150x150?text=Harry+Potter+${1}`;
+            charCard1.alt = "Harry-potter-character-image";
+            CharBadge1.alt = "HP-badge";
+            let secondcardPair = document.getElementById(i +2);
+            const charCard2 = secondcardPair.document.querySelector(".front-face");
+            const CharBadge2 = secondcardPair.document.querySelector(".back-face");
+            charCard2.src = charimg;
+            CharBadge2.src = `https://via.placeholder.com/150x150?text=Harry+Potter+${1}`;
+            charCard2.alt = "Harry-potter-character-image";
+            CharBadge2.alt = "HP-badge";
+        }
     })
     .catch(error => console.error("Error fetching Harry Potter images:", error));
 })();
@@ -39,6 +57,7 @@ function fetchCountryFlags() {
     fetch('https://flagsapi.com/countries')
     .then(response => response.json())
     .then(data => {
+
          const countryFlags = data;
          for (var i = 0; i < 12; i++) {
              const countryFlag = document.createElement('img');
