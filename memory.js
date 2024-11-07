@@ -66,14 +66,14 @@ function fetchCountryFlags() {
              const paircard1 = document.getElementById(`${i + 1}`);
              const Flag1 = paircard1.querySelector(".front-face");
              const Flag1badge = paircard1.document.querySelector(".back-face");
-             Flag1.src = `https://flagsapi.com/'${countryFlag}'/flat/64.png`;
+             Flag1.src = `https://flagsapi.com/${countryFlag}/flat/64.png`;
              Flag1.alt = "country-Flag";
              Flag1badge.src = "https://img.freepik.com/free-vector/earth-globe-model-vector_1308-128315.jpg";
              Flag1badge.alt = "flag-badge";
              const paircard2 = document.getElementById(`${i + 2}`);
              const flag2 = paircard2.querySelector(".front-face");
              const flag2badge = paircard2.querySelector(".back-face");
-             flag2.src = `https://flagsapi.com/'${countryFlag}'/flat/64.png`;
+             flag2.src = `https://flagsapi.com/${countryFlag}/flat/64.png`;
              flag2.alt = "country Flag";
              flag2badge.src = "https://img.freepik.com/free-vector/earth-globe-model-vector_1308-128315.jpg";
              flag2badge.alt = "flag-badge";
