@@ -3,22 +3,22 @@
     fetch('https://hp-api.herokuapp.com/api/characters')
     .then(response => response.json())
     .then(data => {
-        let rng1 = math.floor(Math.random() *2 +1);
         const HPchars = data.message;
         for(var i = 0; i < 12; i+2){
+            let rng1 = math.floor(Math.random() *2 +1);
             const charimg = HPchars[i*rng1].image;
             let firstcardPair = document.getElementById(i+1);
-            const charCard1 = firstcardPair.document.querySelector(".front-face");
-            const CharBadge1 = firstcardPair.document.querySelector(".back-face");
+            const charCard1 = firstcardPair.querySelector(".front-face");
+            const CharBadge1 = firstcardPair.querySelector(".back-face");
             charCard1.src = charimg;
-            CharBadge1.src = `https://via.placeholder.com/150x150?text=Harry+Potter+${1}`;
+            CharBadge1.src = `https://i.ebayimg.com/images/g/UxAAAOSwKiZgoWC5/s-l400.jpg`;
             charCard1.alt = "Harry-potter-character-image";
             CharBadge1.alt = "HP-badge";
             let secondcardPair = document.getElementById(i +2);
-            const charCard2 = secondcardPair.document.querySelector(".front-face");
-            const CharBadge2 = secondcardPair.document.querySelector(".back-face");
+            const charCard2 = secondcardPair.querySelector(".front-face");
+            const CharBadge2 = secondcardPair.querySelector(".back-face");
             charCard2.src = charimg;
-            CharBadge2.src = `https://via.placeholder.com/150x150?text=Harry+Potter+${1}`;
+            CharBadge2.src = `https://i.ebayimg.com/images/g/UxAAAOSwKiZgoWC5/s-l400.jpg`;
             charCard2.alt = "Harry-potter-character-image";
             CharBadge2.alt = "HP-badge";
         }
@@ -26,7 +26,7 @@
     .catch(error => console.error("Error fetching Harry Potter images:", error));
 })();
 
-// function for fetching dog images (incomplete)
+// function for fetching dog images with random
 function fetchDogImages() {
     fetch('https://dog.ceo/api/breeds/image/random/6')
     .then(response => response.json())
@@ -34,15 +34,15 @@ function fetchDogImages() {
          const dogBreeds = data.message;
          for (var i = 0; i < 12; i+2) {
              let cardPairfirstcard = document.getElementById(i + 1);
-             const dogImage1 = cardPairfirstcard.document.querySelector(".front-face");
-             const dogBadge1 = cardPair.document.querySelector(".back-face");
+             const dogImage1 = cardPairfirstcard.querySelector(".front-face");
+             const dogBadge1 = cardPair.querySelector(".back-face");
              dogImage1.src = dogBreeds[i];
              dogBadge1.src = `https://images.dog.ceo/breeds/shiba/shiba-5.jpg`;
              dogImage1.alt = "dog-image";
              dogBadge1.alt = "dog-badge";
              let cardPairSecondcard = document.getElementById(i + 2);
-             const dogImage2 = cardPairSecondcard.document.querySelector(".front-face");
-             const dogBadge2 = cardPairSecondcard.document.querySelector(".back-face");
+             const dogImage2 = cardPairSecondcard.querySelector(".front-face");
+             const dogBadge2 = cardPairSecondcard.querySelector(".back-face");
              dogImage2.src = dogBreeds[i];
              dogBadge2.src = `https://images.dog.ceo/breeds/shiba/shiba-5.jpg`;
              dogImage2.alt = "dog-image";
@@ -57,15 +57,27 @@ function fetchCountryFlags() {
     fetch('https://flagsapi.com/countries')
     .then(response => response.json())
     .then(data => {
-
-         const countryFlags = data;
+         const countryFlags = data.message;
          for (var i = 0; i < 12; i++) {
-             const countryFlag = document.createElement('img');
-             countryFlag.src = countryFlags[country].svg;
-             countryFlag.classList.add('country-flag');
-             document.getElementById('country-flags').appendChild(countryFlag);
-         }
-     })
+             rng2 = math.floor(math.random() *2 + 1);
+             const countryFlag = countryFlags[i*rng2];
+             const paircard1 = document.getElementById(i+1);
+             const Flag1 = paircard1.querySelector(".front-face");
+             const Flag1badge = paircard1.document.querySelector(".back-face");
+             Flag1.src = countryFlags[country].svg;
+             Flag1.alt = "country-Flag";
+             Flag1badge.src = "https://img.freepik.com/free-vector/earth-globe-model-vector_1308-128315.jpg";
+             Flag1badge.alt = "flag-badge";
+             const paircard2 = document.getElementById(i+2);
+             const flag2 = paircard2.querySelector(".front-face");
+             const flag2badge = paircard2.querySelector(".back-face");
+             flag2.src = countryFlags[country].svg;
+             flag2.alt = "country Flag";
+             flag2badge.src = "https://img.freepik.com/free-vector/earth-globe-model-vector_1308-128315.jpg";
+             flag2badge.alt = "flag-badge";
+             
+            }
+        })
     .catch(error => console.error("Error fetching country flags:", error));
 };
 
