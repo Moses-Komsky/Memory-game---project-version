@@ -7,14 +7,14 @@
         for(var i = 0; i < 12; i+2){
             let rng1 = math.floor(Math.random() *3 +1);
             const charimg = HPchars[i*rng1].image;
-            let firstcardPair = document.getElementById(i+1);
+            let firstcardPair = document.getElementById(`${i+1}`);
             const charCard1 = firstcardPair.querySelector(".front-face");
             const CharBadge1 = firstcardPair.querySelector(".back-face");
             charCard1.src = charimg;
             CharBadge1.src = `https://i.ebayimg.com/images/g/UxAAAOSwKiZgoWC5/s-l400.jpg`;
             charCard1.alt = "Harry-potter-character-image";
             CharBadge1.alt = "HP-badge";
-            let secondcardPair = document.getElementById(i +2);
+            let secondcardPair = document.getElementById(`${i +2}`);
             const charCard2 = secondcardPair.querySelector(".front-face");
             const CharBadge2 = secondcardPair.querySelector(".back-face");
             charCard2.src = charimg;
@@ -33,14 +33,14 @@ function fetchDogImages() {
     .then(data => {
          const dogBreeds = data.message;
          for (var i = 0; i < 12; i+2) {
-             let cardPairfirstcard = document.getElementById(i + 1);
+             let cardPairfirstcard = document.getElementById(`${i + 1}`);
              const dogImage1 = cardPairfirstcard.querySelector(".front-face");
              const dogBadge1 = cardPair.querySelector(".back-face");
              dogImage1.src = dogBreeds[i];
              dogBadge1.src = `https://images.dog.ceo/breeds/shiba/shiba-5.jpg`;
              dogImage1.alt = "dog-image";
              dogBadge1.alt = "dog-badge";
-             let cardPairSecondcard = document.getElementById(i + 2);
+             let cardPairSecondcard = document.getElementById(`${i + 2}`);
              const dogImage2 = cardPairSecondcard.querySelector(".front-face");
              const dogBadge2 = cardPairSecondcard.querySelector(".back-face");
              dogImage2.src = dogBreeds[i];
@@ -58,20 +58,22 @@ function fetchCountryFlags() {
     .then(response => response.json())
     .then(data => {
          const countryFlags = data.message;
+         console.log(countryFlags);
          for (var i = 0; i < 12; i++) {
-             rng2 = math.floor(math.random() *3 + 1);
+             let rng2 = math.floor(math.random() *3 + 1);
              const countryFlag = countryFlags[i*rng2];
-             const paircard1 = document.getElementById(i+1);
+             console.log(countryFlag);
+             const paircard1 = document.getElementById(`${i + 1}`);
              const Flag1 = paircard1.querySelector(".front-face");
              const Flag1badge = paircard1.document.querySelector(".back-face");
-             Flag1.src = countryFlags[country].svg;
+             Flag1.src = `https://flagsapi.com/'${countryFlag}'/flat/64.png`;
              Flag1.alt = "country-Flag";
              Flag1badge.src = "https://img.freepik.com/free-vector/earth-globe-model-vector_1308-128315.jpg";
              Flag1badge.alt = "flag-badge";
-             const paircard2 = document.getElementById(i+2);
+             const paircard2 = document.getElementById(`${i + 2}`);
              const flag2 = paircard2.querySelector(".front-face");
              const flag2badge = paircard2.querySelector(".back-face");
-             flag2.src = countryFlags[country].svg;
+             flag2.src = `https://flagsapi.com/'${countryFlag}'/flat/64.png`;
              flag2.alt = "country Flag";
              flag2badge.src = "https://img.freepik.com/free-vector/earth-globe-model-vector_1308-128315.jpg";
              flag2badge.alt = "flag-badge";
@@ -83,12 +85,12 @@ function fetchCountryFlags() {
 
 // function for random fetch requests (incomplete)
 function fetchRandom(){
-    let randomnumber = math.floor(math.random() * 3)
-    if (randomnumber == 0){
+    let randomnumber = math.floor(math.random() * 3 + 1);
+    if (randomnumber == 1){
         HPfetch();
-    }else if (randomnumber == 1){
-        fetchDogImages();
     }else if (randomnumber == 2){
+        fetchDogImages();
+    }else if (randomnumber == 3){
         fetchCountryFlags();
     }
 }
