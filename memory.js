@@ -5,7 +5,7 @@
     .then(data => {
         const HPchars = data.message;
         for(var i = 0; i < 12; i+2){
-            let rng1 = math.floor(Math.random() *2 +1);
+            let rng1 = math.floor(Math.random() *3 +1);
             const charimg = HPchars[i*rng1].image;
             let firstcardPair = document.getElementById(i+1);
             const charCard1 = firstcardPair.querySelector(".front-face");
@@ -59,7 +59,7 @@ function fetchCountryFlags() {
     .then(data => {
          const countryFlags = data.message;
          for (var i = 0; i < 12; i++) {
-             rng2 = math.floor(math.random() *2 + 1);
+             rng2 = math.floor(math.random() *3 + 1);
              const countryFlag = countryFlags[i*rng2];
              const paircard1 = document.getElementById(i+1);
              const Flag1 = paircard1.querySelector(".front-face");
