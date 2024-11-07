@@ -3,21 +3,20 @@
     fetch('https://hp-api.herokuapp.com/api/characters')
     .then(response => response.json())
     .then(data => {
-        const HPchars = data.message;
+        const HPchars = data.image;
+        let rng1 = math.floor(Math.random() *3 +1);
         for(var i = 0; i < 12; i+2){
-            let rng1 = math.floor(Math.random() *3 +1);
-            const charimg = HPchars[i*rng1].image;
             let firstcardPair = document.getElementById(`${i+1}`);
             const charCard1 = firstcardPair.querySelector(".front-face");
             const CharBadge1 = firstcardPair.querySelector(".back-face");
-            charCard1.src = charimg;
+            charCard1.src = HPchars[i*rng1];
             CharBadge1.src = `https://i.ebayimg.com/images/g/UxAAAOSwKiZgoWC5/s-l400.jpg`;
             charCard1.alt = "Harry-potter-character-image";
             CharBadge1.alt = "HP-badge";
             let secondcardPair = document.getElementById(`${i +2}`);
             const charCard2 = secondcardPair.querySelector(".front-face");
             const CharBadge2 = secondcardPair.querySelector(".back-face");
-            charCard2.src = charimg;
+            charCard2.src = HPchars[i*rng1];
             CharBadge2.src = `https://i.ebayimg.com/images/g/UxAAAOSwKiZgoWC5/s-l400.jpg`;
             charCard2.alt = "Harry-potter-character-image";
             CharBadge2.alt = "HP-badge";
@@ -58,11 +57,9 @@ function fetchCountryFlags() {
     .then(response => response.json())
     .then(data => {
          const countryFlags = data.message;
-         console.log(countryFlags);
+         let rng2 = math.floor(math.random() *3 + 1);
          for (var i = 0; i < 12; i++) {
-             let rng2 = math.floor(math.random() *3 + 1);
-             const countryFlag = countryFlags[i*rng2];
-             console.log(countryFlag);
+             const countryFlag = countryFlags[i*rng2];;
              const paircard1 = document.getElementById(`${i + 1}`);
              const Flag1 = paircard1.querySelector(".front-face");
              const Flag1badge = paircard1.document.querySelector(".back-face");
@@ -83,7 +80,7 @@ function fetchCountryFlags() {
     .catch(error => console.error("Error fetching country flags:", error));
 };
 
-// function for random fetch requests (incomplete)
+// function for random fetch requests 
 function fetchRandom(){
     let randomnumber = math.floor(math.random() * 3 + 1);
     if (randomnumber == 1){
